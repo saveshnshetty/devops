@@ -9,7 +9,8 @@ $client.DownloadFile("https://downloads.puppetlabs.com/windows/puppet5/puppet-ag
 cd "c:\temp"
 pwd
 echo "`n13.93.159.60 puppet"  | Out-File -FilePath "C:\Windows\System32\drivers\etc\hosts" -Append -Encoding ascii
-msiexec /qn /norestart /i "c:\temp\puppet.msi" 
+Start-Process -FilePath msiexec -ArgumentList '/qn /norestart /i "c:\temp\puppet.msi"' -Wait -NoNewWindow
+#msiexec /qn /norestart /i "c:\temp\puppet.msi" 
 if(test-path -path "C:\ProgramData\PuppetLabs\facter\facts.d")
   {
     echo "`nconsolename : dev-it-mactores-media" | Out-File -FilePath "C:\ProgramData\PuppetLabs\facter\facts.d\facts.yaml" -Append -Encoding ascii
@@ -20,4 +21,4 @@ if(test-path -path "C:\ProgramData\PuppetLabs\facter\facts.d")
 	echo "`nservertype : media" |  Out-File -FilePath "C:\ProgramData\PuppetLabs\facter\facts.d\facts.yaml" -Append -Encoding ascii
  }
 
-
+Start-Process -FilePath "C:\Program Files\Puppet Labs\Puppet\bin\puppet.bat" -ArgumentList "agent -t" -Wait -NoNewWindow
