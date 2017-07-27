@@ -21,4 +21,4 @@ if(test-path -path "C:\ProgramData\PuppetLabs\facter\facts.d")
 	echo "`nservertype : media" |  Out-File -FilePath "C:\ProgramData\PuppetLabs\facter\facts.d\facts.yaml" -Append -Encoding ascii
  }
 
-Start-Process -FilePath "C:\Program Files\Puppet Labs\Puppet\bin\puppet.bat" -ArgumentList "agent -t" -Wait -NoNewWindow
+#Start-Process -FilePath "C:\Program Files\Puppet Labs\Puppet\bin\puppet.bat" -ArgumentList "agent -t" -Wait -NoNewWindow
