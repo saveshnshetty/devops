@@ -1,3 +1,15 @@
+[cmdletbinding()]
+
+    param(
+            [parameter(
+                mandatory = $true ,
+                valuefrompipeline=$true,
+                position=1)] 
+                [string] $key 
+
+    
+   )
+
 write-host "running init script"
 if(!(test-path -Path "c:\temp"))
   {    
@@ -20,6 +32,7 @@ if(test-path -path "C:\ProgramData\PuppetLabs\facter\facts.d")
 	echo "`napplication : videotouch" |  Out-File -FilePath "C:\ProgramData\PuppetLabs\facter\facts.d\facts.yaml" -Append -Encoding ascii
 	echo "`nservertype : media" |  Out-File -FilePath "C:\ProgramData\PuppetLabs\facter\facts.d\facts.yaml" -Append -Encoding ascii
 	echo "`ncosmosdb : dev-it-mactores-videotouch-cdb.documents.azure.com" |  Out-File -FilePath "C:\ProgramData\PuppetLabs\facter\facts.d\facts.yaml" -Append -Encoding ascii
+	echo "nkey : ${key}" | Out-File -FilePath "C:\ProgramData\PuppetLabs\facter\facts.d\facts.yaml" -Append -Encoding ascii
  }
 
 #Start-Process -FilePath "C:\Program Files\Puppet Labs\Puppet\bin\puppet.bat" -ArgumentList "agent -t" -Wait -NoNewWindow
