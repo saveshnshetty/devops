@@ -1,15 +1,3 @@
-[cmdletbinding()]
-
-    param(
-            [parameter(
-                mandatory = $false ,
-                valuefrompipeline=$true,
-                position=1)] 
-                [string] $key 
-
-    
-   )
-
 write-host "running init script"
 if(!(test-path -Path "c:\temp"))
   {    
